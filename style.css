@@ -8,6 +8,10 @@
     font-family: 'Inter';
     src: url(assets/fonts/Inter-VariableFont_opsz\,wght.ttf);
 }
+@font-face {
+    font-family: 'Montserrat';
+    src: url(assets/fonts/Montserrat-Regular.ttf);
+}
 
 :root{
     --color-primary: #3CC3AD;
@@ -16,14 +20,15 @@
     --color-text-dead: #e0e0e0;
     --color-bg: #ffffff;
 
-    --font-title: sans-serif;
+    --font-title: 'Montserrat', sans-serif;
     --font-text: 'Inter', sans-serif;
-    --font-size-base: 1.25rem;
-    --font-size-large: 1.5rem;
-    --font-size-xl: 2.5rem;
-    --font-size-small: 0.95rem; /*Minimo recomendado diz o chatgpt*/
+    --font-size-base: 1.5rem;
+    --font-size-large: 2.0rem;
+    --font-size-xl: 3.5rem;
+    --font-size-small: 1rem;
 
-    --icon-base: 2.5rem;
+    --icon-base: 3.5rem;
+    --menu-size: 1.5rem;
 }
 
 .section{
@@ -33,171 +38,133 @@
     display: block;
 }
 .layout{
-        display: flex;
-        min-height: 100vh;
-    }
+    display: flex;
+    min-height: 100vh;
+}
+.menu-open{
+    position:fixed;
+    top: 16px;
+    left: 16px;
+    background: var(--color-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 8px;
+    color: white;
+    font-size: var(--menu-size);
+    z-index: 100;
+}
+.menu-close{
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: white;
+    font-size: var(--menu-size);
+    padding: 8px 8px;
+}
+.sidebar{
+    display: none;
+    background-color: var(--color-primary);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    user-select: none;
+}
+.sidebar.open{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 
-    .sidebar{
-        width: 20%;
-        background-color: var(--color-primary);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 256px;
-        gap: 32px;
+.profile-pic{
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid white;
+}
 
-        user-select: none;
-    }
-    .profile-pic{
-        width: 60%;
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 8px solid white;
-    }
-    .nav-link{
-        font-size: var(--font-size-large);
-        font-family: var(--font-title);
-        font-weight: bold;
-        text-decoration: none;
-        color: var(--color-text-dead);
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-    .nav-link.active{
-        color: #ffffff;
-        font-weight: bolder;
-    }
+.nav-link{
+    font-size: var(--font-size-large);
+    font-family: var(--font-title);
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--color-text-dead);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
 
-    .content{
-        width: 80%;
-        display: flex;
-        padding: 48px;
-        align-items: center;
-        color: var(--color-main-text);
-    }
-    .content h1{
-        font-size: var(--font-size-xl);
-        text-transform: uppercase;
-    }
-    .content h2{
-        font-size: var(--font-size-large);
-        text-transform: uppercase;
-        margin-bottom: 32px;
-    }
-    .content p{
-        font-size: var(--font-size-base);
-        margin-bottom: 32px;
-    }
-    .content p.info{
-        font-size: var(--font-size-small);
-        color: var(--color-alt-text);
-        margin-bottom: 32px;
-    }
+.nav-link.active{
+    color: #ffffff;
+    font-weight: bolder;
+}
 
-    .buttons{
-        user-select: none;
-        flex-wrap: wrap;
-    }
-    
-    .buttons i { 
-        font-size: var(--icon-base);
-        color: gray;
-        margin-right: 8px;
-    }
+.content{
+    width: 100%;
+    display: flex;
+    padding: 48px;
+    align-items: center;
+    color: var(--color-main-text);
+}
 
-    .buttons i:hover{
-        color: var(--color-primary);
-    }
+.content h1{
+    font-size: var(--font-size-xl);
+    text-transform: uppercase;
+}
 
+.content h2{
+    font-size: var(--font-size-large);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+}
 
-    .accent{
-        color: var(--color-primary);
-    }
+.content p{
+    font-size: var(--font-size-base);
+    margin-bottom: 32px;
+}
 
+.content p.info{
+    font-size: var(--font-size-small);
+    color: var(--color-alt-text);
+    margin-bottom: 32px;
+}
+
+.buttons{
+    user-select: none;
+    flex-wrap: wrap;
+}
+
+.buttons i{
+    font-size: var(--icon-base);
+    color: gray;
+    margin-right: 8px;
+}
+
+.buttons i:hover{
+    color: var(--color-primary);
+}
+
+.accent{
+    color: var(--color-primary);
+}
 @media (min-width: 768px){ /*desktop*/
-    .layout{
-        display: flex;
-        min-height: 100vh;
+    .menu-open{
+        display: none;
+    }
+    .menu-close{
+        display: none;
     }
 
     .sidebar{
-        width: 20%;
-        background-color: var(--color-primary);
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 256px;
-        gap: 32px;
-
-        user-select: none;
-    }
-    .profile-pic{
-        width: 60%;
-        aspect-ratio: 1 / 1;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 8px solid white;
-    }
-    .nav-link{
-        font-size: var(--font-size-large);
-        font-family: var(--font-title);
-        font-weight: bold;
-        text-decoration: none; /*nao to vendo sublinhado nenhum, mas coloquei por boas praticas*/
-        color: var(--color-text-dead);
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-    .nav-link.active{
-        color: #ffffff;
-        font-weight: bolder;
+        position: static;
+        width: 20%;
     }
 
     .content{
         width: 80%;
-        display: flex;
-        padding: 48px;
-        align-items: center;
-        color: var(--color-main-text);
-    }
-    .content h1{
-        font-size: var(--font-size-xl);
-        text-transform: uppercase;
-    }
-    .content h2{
-        font-size: var(--font-size-large);
-        text-transform: uppercase;
-        margin-bottom: 32px;
-    }
-    .content p{
-        font-size: var(--font-size-base);
-        margin-bottom: 32px;
-    }
-    .content p.info{
-        font-size: var(--font-size-small);
-        color: var(--color-alt-text);
-        margin-bottom: 32px;
-    }
-
-    .buttons{
-        user-select: none; /*descobri que nao são os ícones que são selecionáveis, mas sim, um espaço mínimo entre eles*/
-        flex-wrap: wrap;
-    }
-    
-    .buttons i { /*acho que seria melhor usar .content .buttons mas nesse projeto nao precisa*/
-        font-size: var(--icon-base);
-        color: gray;
-        margin-right: 8px;
-    }
-
-    .buttons i:hover{
-        color: var(--color-primary);
-    }
-
-
-    .accent{
-        color: var(--color-primary);
     }
 }

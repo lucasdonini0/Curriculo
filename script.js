@@ -1,5 +1,8 @@
 const navLinks = document.querySelectorAll(".nav-link")
 const sections = document.querySelectorAll(".section")
+const menuOpen = document.querySelector(".menu-open")
+const menuClose = document.querySelector(".menu-close")
+const sidebar = document.querySelector(".sidebar")
 
 navLinks.forEach(link => {
     link.addEventListener("click", () =>{
@@ -16,5 +19,13 @@ navLinks.forEach(link => {
 
         link.classList.add("active") // pra destacar depois
 
+        sidebar.classList.remove("open")
     })
+})
+
+menuOpen.addEventListener("click", () =>{
+    sidebar.classList.add("open")
+})
+menuClose.addEventListener("click", () =>{
+    sidebar.classList.remove("open")
 })
