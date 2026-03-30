@@ -23,7 +23,7 @@
     --font-size-xl: 2.5rem;
     --font-size-small: 0.95rem; /*Minimo recomendado diz o chatgpt*/
 
-    --icon-base: 2.5rem
+    --icon-base: 2.5rem;
 }
 
 .section{
@@ -32,12 +32,91 @@
 .section.active{
     display: block;
 }
-
 .layout{
-    display: flex;
-}
+        display: flex;
+        min-height: 100vh;
+    }
 
-@media (min-width: 768px){
+    .sidebar{
+        width: 20%;
+        background-color: var(--color-primary);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 256px;
+        gap: 32px;
+
+        user-select: none;
+    }
+    .profile-pic{
+        width: 60%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 8px solid white;
+    }
+    .nav-link{
+        font-size: var(--font-size-large);
+        font-family: var(--font-title);
+        font-weight: bold;
+        text-decoration: none;
+        color: var(--color-text-dead);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .nav-link.active{
+        color: #ffffff;
+        font-weight: bolder;
+    }
+
+    .content{
+        width: 80%;
+        display: flex;
+        padding: 48px;
+        align-items: center;
+        color: var(--color-main-text);
+    }
+    .content h1{
+        font-size: var(--font-size-xl);
+        text-transform: uppercase;
+    }
+    .content h2{
+        font-size: var(--font-size-large);
+        text-transform: uppercase;
+        margin-bottom: 32px;
+    }
+    .content p{
+        font-size: var(--font-size-base);
+        margin-bottom: 32px;
+    }
+    .content p.info{
+        font-size: var(--font-size-small);
+        color: var(--color-alt-text);
+        margin-bottom: 32px;
+    }
+
+    .buttons{
+        user-select: none;
+        flex-wrap: wrap;
+    }
+    
+    .buttons i { 
+        font-size: var(--icon-base);
+        color: gray;
+        margin-right: 8px;
+    }
+
+    .buttons i:hover{
+        color: var(--color-primary);
+    }
+
+
+    .accent{
+        color: var(--color-primary);
+    }
+
+@media (min-width: 768px){ /*desktop*/
     .layout{
         display: flex;
         min-height: 100vh;
@@ -103,7 +182,7 @@
     }
 
     .buttons{
-        user-select: none; /*botei no buttons i mas nao foi nao sei pq*/
+        user-select: none; /*descobri que nao são os ícones que são selecionáveis, mas sim, um espaço mínimo entre eles*/
         flex-wrap: wrap;
     }
     
