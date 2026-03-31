@@ -22,13 +22,20 @@
 
     --font-title: 'Montserrat', sans-serif;
     --font-text: 'Inter', sans-serif;
-    --font-size-base: 1.5rem;
-    --font-size-large: 2.0rem;
-    --font-size-xl: 3.5rem;
-    --font-size-small: 1rem;
+    --font-size-base: clamp(1rem, 2vw, 1.5rem);
+    --font-size-large: clamp(1.2rem, 3vw, 2rem);
+    --font-size-xl: clamp(2rem, 5vw, 3.5rem);
+    --font-size-small: clamp(0.85rem, 1.5vw, 1rem);
 
-    --icon-base: 3.5rem;
+    --icon-base: clamp(2rem, 4vw, 3.5rem);
     --menu-size: 1.5rem;
+}
+body{
+    font-family: var(--font-text);
+}
+h1, h2, h3{
+    font-family: var(--font-title);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .section{
@@ -59,23 +66,34 @@
     border: none;
     color: white;
     font-size: var(--menu-size);
-    padding: 8px 8px;
+    padding-top: 0.6rem;
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
 .sidebar{
-    display: none;
+    display: flex;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    pointer-events: none;
     background-color: var(--color-primary);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 32px;
     user-select: none;
+    overflow-y: auto;
+
+    text-shadow: 2px 2px 8px rgba(238, 238, 238, 0.2);
 }
 .sidebar.open{
     display: flex;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
+    transform: translateX(0);
+    pointer-events: all;
 }
 
 .profile-pic{
@@ -84,6 +102,7 @@
     border-radius: 50%;
     object-fit: cover;
     border: 8px solid white;
+    box-shadow: 2px 2px 8px rgba(238, 238, 238, 0.2);
 }
 
 .nav-link{
@@ -105,7 +124,7 @@
 .content{
     width: 100%;
     display: flex;
-    padding: 48px;
+    padding: clamp(16px, 4vw, 48px);
     align-items: center;
     color: var(--color-main-text);
 }
@@ -149,6 +168,7 @@
 
 .accent{
     color: var(--color-primary);
+    text-shadow: 2px 2px 8px rgba(60, 195, 173, 0.4);
 }
 @media (min-width: 768px){ /*desktop*/
     .menu-open{
@@ -160,11 +180,38 @@
 
     .sidebar{
         display: flex;
+        transform: translateX(0);
+        transition: none;
+        pointer-events: all;
         position: static;
         width: 20%;
+        height: auto;
+        box-shadow: 8px 0px 8px rgba(0, 0, 0, 0.2);
+
+        overflow: hidden;
+    }
+    .sidebar .nav-link{
+        transition: transform 0.1s ease-in-out;
+    }
+    .sidebar .nav-link:hover{
+        transform: scale(1.1);
+    }
+    .profile-pic{
+        transition: transform 0.1s ease-in-out;
+    }
+    .profile-pic:hover{
+        transform: scale(1.1);
     }
 
     .content{
         width: 80%;
+    }
+
+    .content .buttons .btn{
+        transition: transform 0.1s ease-in-out;
+        display: inline-block;
+    }
+    .content .buttons .btn:hover{
+        transform: scale(1.1);
     }
 }
