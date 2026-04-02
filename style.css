@@ -35,7 +35,6 @@ body{
 }
 h1, h2, h3{
     font-family: var(--font-title);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .section{
@@ -88,7 +87,7 @@ h1, h2, h3{
     user-select: none;
     overflow-y: auto;
 
-    text-shadow: 2px 2px 8px rgba(238, 238, 238, 0.2);
+    /*text-shadow: 2px 2px 8px rgba(238, 238, 238, 0.2);*/
 }
 .sidebar.open{
     display: flex;
@@ -139,6 +138,10 @@ h1, h2, h3{
     text-transform: uppercase;
     margin-bottom: 32px;
 }
+.content h3{
+    font-size: var(--font-size-base);
+    text-transform: uppercase;
+}
 
 .content p{
     font-size: var(--font-size-base);
@@ -153,6 +156,7 @@ h1, h2, h3{
 
 .buttons{
     user-select: none;
+    display: flex;
     flex-wrap: wrap;
 }
 
@@ -168,8 +172,23 @@ h1, h2, h3{
 
 .accent{
     color: var(--color-primary);
-    text-shadow: 2px 2px 8px rgba(60, 195, 173, 0.4);
+    /*text-shadow: 2px 2px 8px rgba(60, 195, 173, 0.4);*/
 }
+
+.ul{
+    list-style: none;
+}
+
+.skill-group{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 2vw, 24px);
+    margin-bottom: 32px;
+}
+.skill-group ul{
+    list-style: none;
+}
+
 @media (min-width: 768px){ /*desktop*/
     .menu-open{
         display: none;
@@ -213,5 +232,8 @@ h1, h2, h3{
     }
     .content .buttons .btn:hover{
         transform: scale(1.1);
+    }
+    .skill-group{
+        grid-template-columns: repeat(2, 1fr);
     }
 }
